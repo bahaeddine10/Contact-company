@@ -23,15 +23,15 @@ function App() {
     <BrowserRouter> 
       <Routes>
         <Route path="/Contact-company/" index element={<Home />} />
-        <Route path="/#/Contact-company/about"  element={<About />} />
+        <Route path="/about"  element={<About />} />
 
-        <Route path="/#/Contact-company/NF" element={<NF />} />
+        <Route path="/NF" element={<NF />} />
         
-        <Route path="#/Contact-company/QE" element={<QE/>} />
-        <Route path="#/Contact-company/PC" element={<PC/>} />
-        <Route path="#/Contact-company/contact" element={<Contact/>} />
-        <Route path="#/Contact-company/services" element={<Services/>} />
-        <Route path="#/Contact-company/careers" element={<Career/>} />
+        <Route path="/QE" element={<QE/>} />
+        <Route path="/PC" element={<PC/>} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/services" element={<Services/>} />
+        <Route path="/careers" element={<Career/>} />
         
         <Route path="*" element={<div> Not found </div>} />
 
