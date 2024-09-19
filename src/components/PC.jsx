@@ -9,7 +9,7 @@ function PC() {
       <Col md={6}>
         
         <Image
-          src="../../assets/img/Contact.png" 
+          src="../Contact-company/assets/img/Contact.png" 
           alt="SIAME Warehouse"
           fluid
           className="shadow-sm"

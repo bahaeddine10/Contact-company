@@ -43,11 +43,11 @@ function Services() {
                 
                 <Row xs={1} md={4} className="g-4">
                 <Col >
-                    <Image src="../../assets/img/image1.png" thumbnail />
+                    <Image src="../Contact-company/assets/img/image1.png" thumbnail />
                 </Col>
-                <Col > <Image src="../../assets/img/image2.png" thumbnail /></Col>
-                <Col ><Image src="../../assets/img/image3.png" thumbnail /></Col>
-                <Col ><Image src="../../assets/img/image4.png" thumbnail /></Col>
+                <Col > <Image src="../Contact-company/assets/img/image2.png" thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image3.png" thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image4.png" thumbnail /></Col>
                    
 
                 </Row>
@@ -59,10 +59,10 @@ function Services() {
                 <Col md={6}>
                 <Row xs={1} md={2} className="g-4">
                 <Col >
-                    <Image src="../../assets/img/image5.png" thumbnail />
+                    <Image src=" ../Contact-company/assets/img/image5.png" thumbnail />
                 </Col>
-                <Col > <Image src="../../assets/img/image6.png" thumbnail /></Col>
-                <Col  ><Image src="../../assets/img/image7.png" thumbnail /></Col>
+                <Col > <Image src="../Contact-company/assets/img/image6.png" thumbnail /></Col>
+                <Col  ><Image src="../Contact-company/assets/img/image7.png" thumbnail /></Col>
               
 
                 </Row>
@@ -80,12 +80,12 @@ function Services() {
                 <li className='m-3'> <h4>Technical parts :</h4>
                 <Row xs={2} md={3} className="g-4">
                 <Col >
-                    <Image src="../../assets/img/image9.png" thumbnail />
+                    <Image src=" ../Contact-company/assets/img/image9.png" thumbnail />
                 </Col>
-                <Col > <Image src="../../assets/img/image10.png" thumbnail /></Col>
-                <Col ><Image src="../../assets/img/image11.png" thumbnail /></Col>
-                <Col ><Image src="../../assets/img/image12.png" thumbnail /></Col>
-                <Col ><Image src="../../assets/img/image13.png" thumbnail /></Col>
+                <Col > <Image src="../Contact-company/assets/img/image10.png" thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image11.png" thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image12.png" thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image13.png" thumbnail /></Col>
 
                    
 

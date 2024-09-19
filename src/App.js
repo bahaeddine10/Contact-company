@@ -22,16 +22,16 @@ function App() {
     <NavBar/>
     <BrowserRouter> 
       <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="about" index element={<About />} />
+        <Route path="/Contact-company/" index element={<Home />} />
+        <Route path="/Contact-company/about" index element={<About />} />
 
-        <Route path="NF" element={<NF />} />
+        <Route path="/Contact-company/NF" element={<NF />} />
         
-        <Route path="QE" element={<QE/>} />
-        <Route path="PC" element={<PC/>} />
-        <Route path="contact" element={<Contact/>} />
-        <Route path="services" element={<Services/>} />
-        <Route path="careers" element={<Career/>} />
+        <Route path="/Contact-company/QE" element={<QE/>} />
+        <Route path="/Contact-company/PC" element={<PC/>} />
+        <Route path="/Contact-company/contact" element={<Contact/>} />
+        <Route path="/Contact-company/services" element={<Services/>} />
+        <Route path="/Contact-company/careers" element={<Career/>} />
         
         <Route path="*" element={<div>Not Found</div>} />
 

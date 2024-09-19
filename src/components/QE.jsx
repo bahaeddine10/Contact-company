@@ -4,7 +4,7 @@ import { Container, Row, Col, Card , Accordion, ListGroup, ListGroupItem} from '
 function QE() {
   return (
     <Container fluid className="p-5 bg-light">
-    {/* Header Section */}
+  
     <Row className="mb-4">
       <Col className="text-center">
         <h1 className="display-4">Qualité & Environnement</h1>
@@ -12,7 +12,7 @@ function QE() {
       </Col>
     </Row>
     
-    {/* Main Content Section */}
+  
     <Row className="justify-content-center">
       <Col md={8}>
         <Card className="shadow-sm">
@@ -22,9 +22,9 @@ function QE() {
             
             </p>
 
-            {/* Strategic Pillars Section */}
+          
             <h3>Nos Piliers Stratégiques</h3>
-            <Accordion defaultActiveKey="0">
+            <Accordion >
               <Accordion.Item eventKey="0">
                 <Accordion.Header>1. Plastic injection molding:</Accordion.Header>
                 <Accordion.Body>
@@ -96,7 +96,7 @@ function QE() {
         </Card>
       </Col>
 
-      {/* Image Section */}
+    
       <Col md={4} className="d-flex justify-content-center align-items-center">
         <img
           src="path/to/your/image.png"

@@ -56,10 +56,10 @@ function NF() {
         electric meters </p>
         <Row xs={1} md={2} className="g-4 ">
                 <Col >
-                    <Image src="../../assets/img/image21.png" thumbnail />
+                    <Image src="../Contact-company/assets/img/image21.png" thumbnail />
                 </Col>
                 <Col > 
-                    <Image src="../../assets/img/image19.png"  width={130} height={100} thumbnail />
+                    <Image src="../Contact-company/assets/img/image19.png"  width={130} height={100} thumbnail />
                 </Col>
     
 
@@ -70,10 +70,10 @@ function NF() {
             <p className='fw-lighter text-black'> 2019: we developped 13 molds for SAGEMCOM </p>
         <Row xs={1} md={2} className="g-4 ">
                 <Col >
-                    <Image src="../../assets/img/image18.png" width={300} thumbnail />
+                    <Image src="../Contact-company/assets/img/image18.png" width={300} thumbnail />
                 </Col>
                 <Col > 
-                    <Image src="../../assets/img/image20.png" width={300}   thumbnail />
+                    <Image src="../Contact-company/assets/img/image20.png" width={300}   thumbnail />
                 </Col>
     
 
@@ -92,7 +92,7 @@ function NF() {
 
             <div className='d-flex justify-content-center'>
               <Image
-              src="../../assets/img/logo2.png" 
+              src="../Contact-company/assets/img/logo2.png" 
               alt="SIAME Warehouse"
               fluid
               className="shadow-sm border border-3 border-dark-subtle"
@@ -101,13 +101,13 @@ function NF() {
 
             <Row xs={1} md={2} className="g-4 ">
                 <Col >
-                    <Image src="../../assets/img/image23.png" width={300} thumbnail />
+                    <Image src="../Contact-company/assets/img/image23.png" width={300} thumbnail />
                 </Col>
                 <Col > 
-                    <Image src="../../assets/img/image24.png" width={300}   thumbnail />
+                    <Image src="../Contact-company/assets/img/image24.png" width={300}   thumbnail />
                 </Col>
                 <Col > 
-                    <Image src="../../assets/img/image25.png" width={300}   thumbnail />
+                    <Image src="../Contact-company/assets/img/image25.png" width={300}   thumbnail />
                 </Col>
     
                     </Row>

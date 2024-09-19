@@ -15,7 +15,7 @@ function Home() {
       
       <Col md={6}>
         <Image
-          src="../../assets/img/locationContact.png" 
+          src="../Contact-company/assets/img/locationContact.png" 
           alt="SIAME Warehouse"
           fluid
           className="shadow-sm"
@@ -47,15 +47,15 @@ function Home() {
       <Carousel data-bs-theme="primary">
       <Carousel.Item >
         <img 
-          className="d-block w-100" height={500} src='../assets/img/image27.png' alt='dsds'/>
+          className="d-block w-100" height={500} src='../Contact-company/assets/img/image27.png' alt='dsds'/>
       </Carousel.Item>
       <Carousel.Item >
         <img 
-          className="d-block w-100" height={500} src='../assets/img/image28.png' alt='dsds'/>
+          className="d-block w-100" height={500} src='../Contact-company/assets/img/image28.png' alt='dsds'/>
       </Carousel.Item>
       <Carousel.Item >
         <img 
-          className="d-block w-100" height={500} src='../assets/img/image16.png' alt='dsds'/>
+          className="d-block w-100" height={500} src='../Contact-company/assets/img/image16.png' alt='dsds'/>
 
       </Carousel.Item>
     </Carousel>
