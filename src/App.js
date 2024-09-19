@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { HashRouter as BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 
 import QE from './components/QE';
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className='App'>
     <NavBar/>
-    <BrowserRouter> 
+    <Router> 
       <Routes>
         <Route path="/Contact-company/" index element={<Home />} />
         <Route path="/Contact-company/home"  element={<Home />} />
@@ -38,7 +38,7 @@ function App() {
         <Route path="*" element={<div> Not found </div>} />
 
       </Routes> 
-    </BrowserRouter> 
+    </Router> 
   </div>
   );
 }
