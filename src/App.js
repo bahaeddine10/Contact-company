@@ -23,7 +23,7 @@ function App() {
     <BrowserRouter> 
       <Routes>
         <Route path="/Contact-company/" index element={<Home />} />
-        <Route path="/Contact-company/about" index element={<About />} />
+        <Route path="/Contact-company/about"  element={<About />} />
 
         <Route path="/Contact-company/NF" element={<NF />} />
         

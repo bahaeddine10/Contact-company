@@ -8,7 +8,7 @@ function NavBar() {
       <Container>
         <Navbar.Brand href="/Contact-company/">
           <img
-            src="/Contact-company/assets/img/contact.png"
+            src="../Contact-company/assets/img/contact.png"
             width="150"
             height="30"
             className="d-inline-block align-top"
