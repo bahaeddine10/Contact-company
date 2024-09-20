@@ -3,12 +3,9 @@ import './App.css';
 import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { HashRouter as BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-import QE from './components/QE';
-import NF from './components/NF';
-import PC from './components/PC';
 import Contact from './components/contact';
 import Home from './components/home'; 
 import Services from './components/services'; 
@@ -23,15 +20,10 @@ function App() {
     <BrowserRouter> 
       <Routes>
         <Route path="/Contact-company/" index element={<Home />} />
-        <Route path="/about"  element={<About />} />
-
-        <Route path="/NF" element={<NF />} />
-        
-        <Route path="/QE" element={<QE/>} />
-        <Route path="/PC" element={<PC/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/services" element={<Services/>} />
-        <Route path="/careers" element={<Career/>} />
+        <Route path="/Contact-company/about"  element={<About />} />
+        <Route path="/Contact-company/contact" element={<Contact/>} />
+        <Route path="/Contact-company/services" element={<Services/>} />
+        <Route path="/Contact-company/careers" element={<Career/>} />
         
         <Route path="*" element={<div> Not found </div>} />
 

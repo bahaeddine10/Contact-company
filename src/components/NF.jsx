@@ -46,7 +46,7 @@ function NF() {
              </dl>
              <div className='d-flex justify-content-center'>
             <Image
-          src="../../assets/img/logo.png" 
+          src="../Contact-company/assets/img/logo.png" 
           alt="SIAME Warehouse"
           fluid
           className="shadow-sm border border-3 border-dark-subtle"

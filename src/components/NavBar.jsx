@@ -1,12 +1,12 @@
 import React from 'react';
-import { Navbar, Container, Nav , NavDropdown} from 'react-bootstrap';
+import { Navbar, Container, Nav} from 'react-bootstrap';
 
 
 function NavBar() {
   return (
     <Navbar variant='top'  className='navbar' style={{backgroundColor: 'whitesmoke',position: 'sticky',top: '0',zIndex: '1'}}   expand="lg" >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/Contact-company/">
           <img
             src="../Contact-company/assets/img/contact.png"
             width="150"
@@ -18,17 +18,13 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about">About us</Nav.Link>
-            <NavDropdown title="À Propos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/PC">À Propos de la Contact</NavDropdown.Item>
-              <NavDropdown.Item href="/NF">Nos Clients</NavDropdown.Item>
-              <NavDropdown.Item href="/QE">Qualité & Environnement</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="/services">Services</Nav.Link>
-            <Nav.Link href="/media">Media</Nav.Link>
-            <Nav.Link href="/careers">Carrer</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Link href="/Contact-company/">Home</Nav.Link>
+            <Nav.Link href="/Contact-company/about">About us</Nav.Link>
+            
+            <Nav.Link href="/Contact-company/services">Services</Nav.Link>
+            <Nav.Link href="/Contact-company/media">Media</Nav.Link>
+            <Nav.Link href="/Contact-company/careers">Carrer</Nav.Link>
+            <Nav.Link href="/Contact-company/contact">Contact</Nav.Link>
           </Nav>
           
         </Navbar.Collapse>

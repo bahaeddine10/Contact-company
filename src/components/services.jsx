@@ -41,13 +41,13 @@ function Services() {
 
                </ul>
                 
-                <Row xs={1} md={4} className="g-4">
+                <Row xs={2} md={2} className="g-4">
                 <Col >
-                    <Image src="../Contact-company/assets/img/image1.png" thumbnail />
+                    <Image src="../Contact-company/assets/img/image1.png"  thumbnail />
                 </Col>
-                <Col > <Image src="../Contact-company/assets/img/image2.png" thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image3.png" thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image4.png" thumbnail /></Col>
+                <Col > <Image src="../Contact-company/assets/img/image2.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image3.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image4.png"  width={'300px'} height={'300px'} thumbnail /></Col>
                    
 
                 </Row>
@@ -59,10 +59,10 @@ function Services() {
                 <Col md={6}>
                 <Row xs={1} md={2} className="g-4">
                 <Col >
-                    <Image src=" ../Contact-company/assets/img/image5.png" thumbnail />
+                    <Image src=" ../Contact-company/assets/img/image5.png" width={'300px'} height={'300px'} thumbnail />
                 </Col>
-                <Col > <Image src="../Contact-company/assets/img/image6.png" thumbnail /></Col>
-                <Col  ><Image src="../Contact-company/assets/img/image7.png" thumbnail /></Col>
+                <Col > <Image src="../Contact-company/assets/img/image6.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col  ><Image src="../Contact-company/assets/img/image7.png" width={'300px'} height={'300px'} thumbnail /></Col>
               
 
                 </Row>
@@ -75,24 +75,22 @@ function Services() {
                 players.</p>
                <ul>
                 <li  className='m-3'><h4>Automotive parts:</h4></li>
-                <Image src="../../assets/img/image8.png" thumbnail />
+                <Image src="../Contact-company/assets/img/image8.png" width={'300px'} height={'300px'} thumbnail />
 
                 <li className='m-3'> <h4>Technical parts :</h4>
                 <Row xs={2} md={3} className="g-4">
                 <Col >
-                    <Image src=" ../Contact-company/assets/img/image9.png" thumbnail />
+                    <Image src=" ../Contact-company/assets/img/image9.png" width={'300px'} height={'300px'} thumbnail />
                 </Col>
-                <Col > <Image src="../Contact-company/assets/img/image10.png" thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image11.png" thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image12.png" thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image13.png" thumbnail /></Col>
+                <Col > <Image src="../Contact-company/assets/img/image10.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image11.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image12.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="../Contact-company/assets/img/image13.png" width={'300px'} height={'300px'} thumbnail /></Col>
 
                    
 
                 </Row>
                 </li>
-
-               
 
                </ul>
                 
