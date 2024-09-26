@@ -20,10 +20,10 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/" index element={<Home />} />
-        <Route path="/about"  element={<About />} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/services" element={<Services/>} />
-        <Route path="/careers" element={<Career/>} />
+        <Route path="/Contact-company/#/about"  element={<About />} />
+        <Route path="/Contact-company/#/contact" element={<Contact/>} />
+        <Route path="/Contact-company/#/services" element={<Services/>} />
+        <Route path="/Contact-company/#careers" element={<Career/>} />
         
         <Route path="*" element={<div> Not found </div>} />
 
