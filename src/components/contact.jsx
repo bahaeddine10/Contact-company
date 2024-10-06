@@ -41,7 +41,7 @@ function Contact() {
       );
   };
   return (
-    <div >
+    
       <Container fluid className="p-5">
     <Row className="justify-content-center g-2">
       
@@ -116,7 +116,7 @@ function Contact() {
       </Col>
     </Row>
   </Container>
-    </div>
+   
   )
 }
 
