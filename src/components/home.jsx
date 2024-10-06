@@ -85,7 +85,7 @@ function Home() {
              <p className='text-black me-3 ms-3'>Our commitment to flexibility, operating 24/7 with multiple shifts, ensures that we meet the diverse needs of our clients.</p>
         </Container>
    
-    <Contact/>
+    <Contact className="p-5 block"></Contact>
    
     
     </div>
