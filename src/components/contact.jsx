@@ -46,8 +46,8 @@ function Contact() {
     <Row className="justify-content-center g-2">
       
       <Col md={6}>
-      <Card className="shadow-sm">
-          <Card.Body>
+      
+          
             <h2 className="mb-4">Contact us</h2>
             <ListGroup>
             <ListGroupItem><FontAwesomeIcon icon={faPhone}  /> (+216) 72 213 636</ListGroupItem>
@@ -55,15 +55,14 @@ function Contact() {
             <ListGroupItem><FontAwesomeIcon icon={faMailBulk}  /> <a href="mailto:contact.commercial@contact.com.tn" className='text-decoration-none text-black'>contact.commercial@contact.com.tn </a></ListGroupItem>
             </ListGroup>
             
-            </Card.Body>
-        </Card>
+       
         
       </Col>
 
       
       <Col md={6}>
-      <Card className="shadow-sm">
-          <Card.Body>
+      
+         
           <Form onSubmit={handleSubmit}>
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
@@ -109,8 +108,7 @@ function Contact() {
         <p style={{ color: 'green' }}>Email sent successfully!</p>
       )}
     </Form>
-            </Card.Body>
-        </Card>
+       
         
         
       </Col>
