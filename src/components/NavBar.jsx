@@ -22,6 +22,8 @@ function NavBar() {
             <Nav.Link href="#/about">About us</Nav.Link>
             
             <Nav.Link href="#/services">Services</Nav.Link>
+            <Nav.Link href="#/Apply">Apply</Nav.Link>
+
             <Nav.Link href="#/careers">Carrer</Nav.Link>
             <Nav.Link href="#/contact">Contact</Nav.Link>
           </Nav>

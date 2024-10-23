@@ -12,6 +12,7 @@ import Services from './components/services';
 
 import About  from "./components/about";
 import Career from "./components/Carrer";
+import DemandJob from './components/DemandJob';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
         <Route path="/about"  element={<About />} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/services" element={<Services/>} />
+        <Route path="/services" element={<Services/>} />
+        <Route path="/Apply" element={<DemandJob/>} />
+       
+        
         <Route path="/careers" element={<Career/>} />
         
         <Route path="*" element={<div> Not found </div>} />
