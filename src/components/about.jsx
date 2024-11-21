@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Container , Image,Carousel, CarouselCaption} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import PC from './PC';
 import NF from './NF';
 function About() {

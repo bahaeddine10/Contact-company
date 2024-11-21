@@ -12,7 +12,6 @@ function DemandJob() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // handle form submission here
     console.log(cv);
   };
 
@@ -63,8 +62,11 @@ function DemandJob() {
               <Form.Label>Upload CV:</Form.Label>
               <Form.Control type="file" onChange={handleCvChange} />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" className='mt-2' type="submit">
               Submit
+            </Button>
+            <Button variant="primary" className='mt-2' type="rest">
+              reset
             </Button>
           </Form>
         </Col>

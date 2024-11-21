@@ -14,17 +14,17 @@ function Contact() {
     e.preventDefault();
     const templateParams = {
       from_name: name,
-      to_name: 'Your Name', // Replace with your name
+      to_name: 'oc', 
       subject: subject,
       message_html: message,
       reply_to: email,
     };
 
     emailjs.send(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-      'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+      'service_mykss0g', // Replace with your EmailJS service ID
+      'template_57p81sn', // Replace with your EmailJS template ID
       templateParams,
-      'YOUR_USER_ID' // Replace with your EmailJS user ID
+      'uUrjQ5qmovh6LnfOR' // Replace with your EmailJS user ID
     )
       .then(
         (response) => {
