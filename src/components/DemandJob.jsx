@@ -1,6 +1,70 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import emailjs from 'emailjs-com';
+import axios from 'axios';
 
+const DemandForm = () => {
+  const [formData, setFormData] = useState({
+    jobTitle: '',
+    jobDesc: '',
+    reqSkills: '',
+    experience: 0,
+    education: '',
+    salary: 0,
+    email: '',
+    file: null, // To store the CV file
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, file: e.target.files[0] });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+
+    // Append form data
+    for (let key in formData) {
+      data.append(key, formData[key]);
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/uploaddemand', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      alert('Demand sent successfully!');
+      console.log('Response:', response.data);
+    } catch (error) {
+      alert('Error sending demand. Check console for details.');
+      console.error(error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="jobTitle" placeholder="Job Title" value={formData.jobTitle} onChange={handleChange} required />
+      <input name="jobDesc" placeholder="Job Description" value={formData.jobDesc} onChange={handleChange} required />
+      <input name="reqSkills" placeholder="Required Skills" value={formData.reqSkills} onChange={handleChange} required />
+      <input type="number" name="experience" placeholder="Experience" value={formData.experience} onChange={handleChange} required />
+      <input name="education" placeholder="Education" value={formData.education} onChange={handleChange} required />
+      <input type="number" name="salary" placeholder="Salary" value={formData.salary} onChange={handleChange} required />
+      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+      <input type="file" name="file" onChange={handleFileChange} required />
+      <button type="submit">Send Demand</button>
+    </form>
+  );
+};
+
+export default DemandForm;
+
+/*
 function DemandJob() {
   const [jobTitle, setJobTitle] = useState('');
   const [jobDescription, setJobDescription] = useState('');
@@ -12,6 +76,27 @@ function DemandJob() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const templateParams = {
+      jobTitle,
+      jobDescription,
+      requiredSkills,
+      experience,
+      education,
+      salary,
+      cv
+    };
+    emailjs.send(
+      'service_mykss0g',
+      'template_yckzbbg',
+      templateParams,
+      'uUrjQ5qmovh6LnfOR'
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    })
+    .catch((err) => {
+      console.error('FAILED...', err);
+    });
     console.log(cv);
   };
 
@@ -62,10 +147,10 @@ function DemandJob() {
               <Form.Label>Upload CV:</Form.Label>
               <Form.Control type="file" onChange={handleCvChange} />
             </Form.Group>
-            <Button variant="primary" className='mt-2' type="submit">
+            <Button variant="primary" className='mt-2 me-2' type="submit">
               Submit
             </Button>
-            <Button variant="primary" className='mt-2' type="rest">
+            <Button variant="primary" className='mt-2 ms-2' type="rest">
               reset
             </Button>
           </Form>
@@ -75,4 +160,4 @@ function DemandJob() {
   );
 }
 
-export default DemandJob;
+export default DemandJob;*/

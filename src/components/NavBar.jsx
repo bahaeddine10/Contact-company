@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Container, Nav} from 'react-bootstrap';
+import { Navbar, Container, Nav , Button} from 'react-bootstrap';
 
 
 function NavBar() {
@@ -27,7 +27,9 @@ function NavBar() {
             <Nav.Link href="#/careers">Carrer</Nav.Link>
             <Nav.Link href="#/contact">Contact</Nav.Link>
           </Nav>
-          
+          <Button variant="primary" onClick={() => window.location.href = '/login'}>
+          Login
+        </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
