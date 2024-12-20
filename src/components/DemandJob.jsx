@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import emailjs from 'emailjs-com';
+import { Form, Button, Container, Row, Col ,Card} from 'react-bootstrap';
+
 import axios from 'axios';
 
 const DemandForm = () => {
@@ -11,8 +11,9 @@ const DemandForm = () => {
     experience: 0,
     education: '',
     salary: 0,
+    accepted:false,
     email: '',
-    file: null, // To store the CV file
+    cv: null, 
   });
 
   const handleChange = (e) => {
@@ -21,8 +22,8 @@ const DemandForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, file: e.target.files[0] });
-  };
+    setFormData({ ...formData, cv: e.target.files[0] }); // use 'cv' instead of 'file'
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const DemandForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/uploaddemand', data, {
+      const response = await axios.post('http://localhost:3002/uploaddemand', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -48,17 +49,54 @@ const DemandForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="jobTitle" placeholder="Job Title" value={formData.jobTitle} onChange={handleChange} required />
-      <input name="jobDesc" placeholder="Job Description" value={formData.jobDesc} onChange={handleChange} required />
-      <input name="reqSkills" placeholder="Required Skills" value={formData.reqSkills} onChange={handleChange} required />
-      <input type="number" name="experience" placeholder="Experience" value={formData.experience} onChange={handleChange} required />
-      <input name="education" placeholder="Education" value={formData.education} onChange={handleChange} required />
-      <input type="number" name="salary" placeholder="Salary" value={formData.salary} onChange={handleChange} required />
-      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-      <input type="file" name="file" onChange={handleFileChange} required />
-      <button type="submit">Send Demand</button>
-    </form>
+    <Container>
+      <Row>
+        <Col xs={12} md={6} lg={4} className="mx-auto">
+          <Card>
+            <Card.Body>
+              <h2 className="text-center mb-4">Send Demand</h2>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="jobTitle">
+                  <Form.Label>Job Title:</Form.Label>
+                  <Form.Control type="text" name="jobTitle" value={formData.jobTitle} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="jobDesc">
+                  <Form.Label>Job Description:</Form.Label>
+                  <Form.Control as="textarea" name="jobDesc" value={formData.jobDesc} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="reqSkills">
+                  <Form.Label>Required Skills:</Form.Label>
+                  <Form.Control type="text" name="reqSkills" value={formData.reqSkills} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="experience">
+                  <Form.Label>Experience:</Form.Label>
+                  <Form.Control type="number" name="experience" value={formData.experience} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="education">
+                  <Form.Label>Education:</Form.Label>
+                  <Form.Control type="text" name="education" value={formData.education} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="salary">
+                  <Form.Label>Salary:</Form.Label>
+                  <Form.Control type="number" name="salary" value={formData.salary} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="email">
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group controlId="cv">
+                    <Form.Label>Upload CV:</Form.Label>
+                     <Form.Control type="file" name="cv" onChange={handleFileChange} required />
+                </Form.Group>
+
+
+                <Button type="submit">Send Demand</Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

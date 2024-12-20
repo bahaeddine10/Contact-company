@@ -3,6 +3,8 @@ const app=express()
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+const cors = require('cors');
+app.use(cors());
 
 
 
@@ -19,6 +21,6 @@ app.use('/agent',agentRout)
 
 
 
-app.listen(3000, () => {
+app.listen(3002, () => {
     console.log('Server is running on port 3000');
 });

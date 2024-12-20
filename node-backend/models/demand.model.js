@@ -9,9 +9,9 @@ const demandSchema = new mongoose.Schema({
     accepted: { type: Boolean, default: false },
     email: { type: String, required: true },
     file: {
-      filename: String,
-      data: Buffer,
-      contentType: String,
+        filename: { type: String, required: true },
+        data: { type: Buffer, required: true },
+        contentType: { type: String, required: true },
     },
   });
   
@@ -50,6 +50,28 @@ const selectAllNotAccepted = () => {
     });
 };
 
+const selectAllAccepted = () => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(url)
+            .then(async () => {
+                try {
+                    // Modify the query to filter demands where 'consulted' is false
+                    const data = await Demand.find({ accepted: true });
+                    resolve(data);
+                    mongoose.disconnect();
+                } catch (err) {
+                    reject(err);
+                }
+            })
+            .catch((err) => {
+                reject(err);
+            });
+    });
+};
+
+demandSchema.statics.getFileByName = async function (filename) {
+    return this.findOne({ 'file.filename': filename }, 'file').exec(); // Only return the `file` field
+};
 
   // Function to save a new Demand
   const saveDemand=async (demandData)=>{
@@ -76,7 +98,7 @@ const deleteone=(id)=>{
                 if (!deletedDemand) {
                     reject('demand not found');
                 }
-                resolve(deletedStudent)
+                resolve(deletedDemand)
                 mongoose.disconnect()
             }).catch((err) => reject(err))
         })
@@ -93,7 +115,7 @@ const accepteone=(id)=>{
                 if (!updatedDemand) {
                     reject('demand not found');
                 }
-               // Send an email to the employee
+               /*// Send an email to the employee
                const transporter = nodemailer.createTransport({
                 service: 'gmail', // Use your preferred email service
                 auth: {
@@ -109,7 +131,7 @@ const accepteone=(id)=>{
                     text: `Dear Employee,\n\nYour application for the position "${updatedDemand.jobTitle}" has been accepted.\n\nBest regards,\nYour Company`
                 };
 
-                await transporter.sendMail(mailOptions);
+                await transporter.sendMail(mailOptions);*/
                 resolve(updatedDemand);
             })
             .catch((err) => reject(err))
@@ -124,7 +146,8 @@ const accepteone=(id)=>{
     testConnection,
     selectAllNotAccepted,
     deleteone,
-    accepteone
+    accepteone,
+    selectAllAccepted
   };
 
 /*

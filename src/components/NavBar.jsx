@@ -26,10 +26,15 @@ function NavBar() {
 
             <Nav.Link href="#/careers">Carrer</Nav.Link>
             <Nav.Link href="#/contact">Contact</Nav.Link>
+           
+
           </Nav>
-          <Button variant="primary" onClick={() => window.location.href = '/login'}>
+          <Button variant="primary" onClick={() => window.location.href = '#/login'}>
           Login
         </Button>
+        {/* <Button variant="primary" onClick={() => window.location.href = '#/signup'}>
+          sign up
+        </Button> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
