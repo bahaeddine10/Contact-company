@@ -11,7 +11,7 @@ import About  from "./components/about";
 import Career from "./components/Carrer";
 import DemandJob from './components/DemandJob';
 import Dashboard from './components/Dashboard';
-import Login from './components/Login';
+import Login from './components/login';
 //import Signup from './components/Signup';
 import Accept from './components/Accept';
 import Sidebar from './components/sidebar';
@@ -43,8 +43,8 @@ function App() {
         
         <Route path="/careers" element={<Career/>} />
         <Route path="/login" element={<Login/>} />
-        {/* <Route path="/signup" element={<Signup/>} /> */}
-        {/*<Route path="/dashboard" element={<Dashboard />} />
+        {/*<Route path="/signup" element={<Signup/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/accept" element={<Accept />} />
         <Route path="/sidebar" element={<Sidebar />} />*/}
         <Route path="/*" element={<Container/>} />

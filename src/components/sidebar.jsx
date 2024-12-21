@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -17,11 +17,11 @@ export default function Sidebar() {
     </Navbar>
   );
 }
-/*
+*/
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import { House, CheckCircle, XCircle } from 'react-bootstrap-icons';
+import { House, CheckCircle, XCircle,Briefcase } from 'react-bootstrap-icons';
 
 const styles = {
   sidebar: {
@@ -104,25 +104,31 @@ export default function Sidebar() {
         >
           <House style={styles.icon} /> Dashboard
         </Link>
-        <Link 
+        {/*<Link 
           to="/accepte" 
           className={getNavLinkClass('/not-accepted')}
           style={styles.navLink}
         >
           <XCircle style={styles.icon} /> Not Accepted
-        </Link>
+        </Link>*/}
         <Link 
-          to="/accepte" 
-          className={getNavLinkClass('/accepte')}
+          to="/accept" 
+          className={getNavLinkClass('/accept')}
           style={styles.navLink}
         >
           <CheckCircle style={styles.icon} /> Accepted
         </Link>
+        <Link 
+          to="/project" 
+          className={getNavLinkClass('/project')}
+          style={styles.navLink}
+        >
+          <Briefcase style={styles.icon} /> Projects
+        </Link>
       </Nav>
       <div style={styles.footer}>
-        <small>&copy; 2023 Your Company</small>
+        <small>&copy; 2024 Contact_Company</small>
       </div>
     </Navbar>
   );
 }
-*/

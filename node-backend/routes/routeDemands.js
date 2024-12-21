@@ -75,7 +75,7 @@ route.get('/alldemandsnotaccepted', verifyToken, (req, res) => {
 });
 
 // Route for fetching all demands that are not accepted
-route.get('/alldemandsaccepted', verifyToken, (req, res) => {
+route.get('/alldemandsaccepted',verifyToken, (req, res) => {
     demandModel.selectAllAccepted()
         .then((data) => res.json(data))
         .catch((err) => res.status(500).send(err)); // Ensure proper error status

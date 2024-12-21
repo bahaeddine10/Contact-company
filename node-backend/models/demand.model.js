@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
 const demandSchema = new mongoose.Schema({
     jobTitle: { type: String, required: true },
     jobDesc: { type: String, required: true },
@@ -115,23 +116,31 @@ const accepteone=(id)=>{
                 if (!updatedDemand) {
                     reject('demand not found');
                 }
-               /*// Send an email to the employee
+               // Send an email to the employee
                const transporter = nodemailer.createTransport({
                 service: 'gmail', // Use your preferred email service
                 auth: {
-                    user: '', // Your email
-                    pass: ''   // Your email password
+                    user: 'abassiadem321@gmail.com', // Your email
+                    pass: 'pyld mpmz zzyo krbh'   // Your email password
                 }
                });
 
                const mailOptions = {
-                    from: '', // Sender's email
+                    from: 'abassiadem321@gmail.com', // Sender's email
                     to: updatedDemand.email,      // Employee's email
                     subject: 'Job Application Accepted',
                     text: `Dear Employee,\n\nYour application for the position "${updatedDemand.jobTitle}" has been accepted.\n\nBest regards,\nYour Company`
                 };
 
-                await transporter.sendMail(mailOptions);*/
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                      console.error(error);
+                      res.status(500).send('Error sending email');
+                    } else {
+                      console.log('Email Sent: ' + info.response);
+                      res.redirect('/');
+                    }
+                  });
                 resolve(updatedDemand);
             })
             .catch((err) => reject(err))

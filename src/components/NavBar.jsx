@@ -32,9 +32,9 @@ function NavBar() {
           <Button variant="primary" onClick={() => window.location.href = '#/login'}>
           Login
         </Button>
-        {/* <Button variant="primary" onClick={() => window.location.href = '#/signup'}>
+         {/*<Button variant="primary" onClick={() => window.location.href = '#/signup'}>
           sign up
-        </Button> */}
+        </Button>*/}
         </Navbar.Collapse>
       </Container>
     </Navbar>

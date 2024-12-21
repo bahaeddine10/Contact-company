@@ -15,6 +15,9 @@ app.use('/',demandRout)
 const agentRout=require('./routes/routeAgent')
 app.use('/agent',agentRout)
 
+const projectRout=require('./routes/routeProject')
+app.use('/project',projectRout)
+
 
 
 
