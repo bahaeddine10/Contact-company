@@ -15,8 +15,12 @@ const ProjectManagement = () => {
     const [selectedEmail, setSelectedEmail] = useState('');
 
     useEffect(() => {
-        fetchProjects();
-        fetchEmployeeEmails();
+        const loadProjectPageData = async () => {
+            await fetchProjects();
+            await fetchEmployeeEmails();
+        };
+
+        loadProjectPageData();
     }, []);
 
     const fetchProjects = async () => {
@@ -26,7 +30,7 @@ const ProjectManagement = () => {
                 alert('You are not authenticated!');
                 return;
             }
-            const response = await axios.get('http://localhost:3002/project/all',{
+            const response = await axios.get('http://localhost:3000/project/all',{
                 headers: {
                   Authorization: token,
                 },
@@ -44,13 +48,17 @@ const ProjectManagement = () => {
           alert('You are not authenticated!');
           return;
         }
-            const response = await axios.get('http://localhost:3002/alldemandsaccepted', {
+                        const response = await axios.get('http://localhost:3000/alldemandsaccepted', {
                 headers: {
                   Authorization: token,
                 },
               });
-            const emails = response.data.map(demand => demand.email);
-            setEmployeeEmails([...new Set(emails)]); // Ensure unique emails
+                        const rawData = Array.isArray(response.data) ? response.data : [];
+                        const emails = rawData
+                                .map((demand) => (demand?.email ? String(demand.email).trim() : ''))
+                                .filter((email) => email.length > 0);
+
+                        setEmployeeEmails([...new Set(emails)]);
         } catch (error) {
             console.error('Error fetching employee emails', error);
         }
@@ -79,7 +87,7 @@ const ProjectManagement = () => {
           alert('You are not authenticated!');
           return;
         }
-            await axios.post('http://localhost:3002/project/create', newProject, {
+            await axios.post('http://localhost:3000/project/create', newProject, {
                 headers: {
                   Authorization: token,
                 },
@@ -147,7 +155,7 @@ const ProjectManagement = () => {
                                 <label>Employees</label>
                                 <div className="input-group mb-2">
                                     <select
-                                        className="custom-select"
+                                        className="form-select"
                                         value={selectedEmail}
                                         onChange={(e) => setSelectedEmail(e.target.value)}
                                     >
@@ -156,7 +164,7 @@ const ProjectManagement = () => {
                                             <option key={index} value={email}>{email}</option>
                                         ))}
                                     </select>
-                                    <div className="input-group-append">
+                                    <div>
                                         <button type="button" className="btn btn-primary" onClick={handleAddEmployee}>
                                             Add
                                         </button>

@@ -9,7 +9,7 @@ const userShecma=mongoose.Schema({
 })
 
 var User=mongoose.model('agent',userShecma)
-url='mongodb://localhost:27017/contactdb'
+url='mongodb://127.0.0.1:27017/contactdb'
 
 exports.register=(obj)=>{
     return new Promise((resolve,reject)=>{

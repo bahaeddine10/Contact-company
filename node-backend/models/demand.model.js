@@ -16,7 +16,7 @@ const demandSchema = new mongoose.Schema({
     },
   });
   
-  var url='mongodb://localhost:27017/contactdb'
+    var url='mongodb://127.0.0.1:27017/contactdb'
   // Create the Demand model
   const Demand = mongoose.model('Demand', demandSchema);
   
@@ -114,33 +114,32 @@ const accepteone=(id)=>{
             Demand.findOneAndUpdate({_id:id},{accepted : true},{ new: true })
             .then(async (updatedDemand) => {
                 if (!updatedDemand) {
-                    reject('demand not found');
+                    return reject('demand not found');
                 }
-               // Send an email to the employee
-               const transporter = nodemailer.createTransport({
-                service: 'gmail', // Use your preferred email service
-                auth: {
-                    user: 'abassiadem321@gmail.com', // Your email
-                    pass: 'pyld mpmz zzyo krbh'   // Your email password
+
+                // Keep accept action successful even if email provider auth fails.
+                try {
+                    const transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: 'abassiadem321@gmail.com',
+                            pass: 'pyld mpmz zzyo krbh'
+                        }
+                    });
+
+                    const mailOptions = {
+                        from: 'abassiadem321@gmail.com',
+                        to: updatedDemand.email,
+                        subject: 'Job Application Accepted',
+                        text: `Dear Employee,\n\nYour application for the position "${updatedDemand.jobTitle}" has been accepted.\n\nBest regards,\nYour Company`
+                    };
+
+                    await transporter.sendMail(mailOptions);
+                } catch (error) {
+                    console.error('Email send failed:', error.message);
                 }
-               });
 
-               const mailOptions = {
-                    from: 'abassiadem321@gmail.com', // Sender's email
-                    to: updatedDemand.email,      // Employee's email
-                    subject: 'Job Application Accepted',
-                    text: `Dear Employee,\n\nYour application for the position "${updatedDemand.jobTitle}" has been accepted.\n\nBest regards,\nYour Company`
-                };
-
-                transporter.sendMail(mailOptions, function (error, info) {
-                    if (error) {
-                      console.error(error);
-                      res.status(500).send('Error sending email');
-                    } else {
-                      console.log('Email Sent: ' + info.response);
-                      res.redirect('/');
-                    }
-                  });
+                mongoose.disconnect();
                 resolve(updatedDemand);
             })
             .catch((err) => reject(err))

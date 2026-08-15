@@ -12,7 +12,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3002/agent/login', {
+      const response = await axios.post('http://localhost:3000/agent/login', {
         email,
         password,
       });

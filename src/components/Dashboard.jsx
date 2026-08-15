@@ -90,7 +90,7 @@ const Dashboard = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:3002/alldemandsnotaccepted', {
+        const response = await axios.get('http://localhost:3000/alldemandsnotaccepted', {
           headers: {
             Authorization: token,
           },
@@ -115,7 +115,7 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await axios.put(`http://localhost:3002/updatedemand/${id}`, null, {
+      const response = await axios.put(`http://localhost:3000/updatedemand/${id}`, null, {
         headers: {
           Authorization: token,
         },
@@ -140,7 +140,7 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await axios.delete(`http://localhost:3002/deletedemand/${id}`, {
+      const response = await axios.delete(`http://localhost:3000/deletedemand/${id}`, {
         headers: {
           Authorization: token,
         },

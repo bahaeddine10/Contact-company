@@ -35,7 +35,7 @@ const DemandForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3002/uploaddemand', data, {
+      const response = await axios.post('http://localhost:3000/uploaddemand', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

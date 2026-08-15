@@ -9,7 +9,7 @@ export default function Accept() {
     const fetchAcceptedDemands = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:3002/alldemandsaccepted', {
+        const response = await axios.get('http://localhost:3000/alldemandsaccepted', {
           headers: { Authorization: token },
         });
         setDemands(response.data);
@@ -80,7 +80,7 @@ const Accept = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:3002/alldemandsaccepted', {
+        const response = await axios.get('http://localhost:3000/alldemandsaccepted', {
           headers: {
             Authorization: token,
           },
