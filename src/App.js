@@ -1,4 +1,5 @@
 
+import React, { useEffect } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +21,39 @@ import Container from './components/container';
 
 function App() {
   const location = useLocation();
+
+  useEffect(() => {
+    const elements = document.querySelectorAll('.block');
+
+    if (!elements.length) {
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   // Define routes where the Sidebar should appear
   const sidebarRoutes = ["/dashboard", "/accept"];

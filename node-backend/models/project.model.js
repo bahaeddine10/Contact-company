@@ -22,7 +22,7 @@ const projectSchema = new mongoose.Schema({
         default: "not finished yet",
     }
 });
-var url='mongodb://127.0.0.1:27017/contactdb'
+const url = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/contactdb'
 
 const Project = mongoose.model('Project', projectSchema);
 // Function to create a new project

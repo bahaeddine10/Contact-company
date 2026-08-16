@@ -16,7 +16,7 @@ const demandSchema = new mongoose.Schema({
     },
   });
   
-    var url='mongodb://127.0.0.1:27017/contactdb'
+    const url = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/contactdb'
   // Create the Demand model
   const Demand = mongoose.model('Demand', demandSchema);
   

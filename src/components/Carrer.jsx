@@ -17,8 +17,8 @@ function Carrer() {
               components of the new VW TROC.
               <Row xs={2} md={2} className="g-4 me-5 ms-5">
               
-                <Col > <Image src="../Contact-company/assets/img/image29.png" width={'300px'} height={'300px'} thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image23.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col > <Image src="/assets/img/image29.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="/assets/img/image23.png" width={'300px'} height={'300px'} thumbnail /></Col>
                 </Row>
               </dd>
 
@@ -27,24 +27,24 @@ function Carrer() {
                 <p>we developped 10 molds for 13 items for the project of renovation of TGV DUPLEX SNCF trains and 9 molds for the armrest components of the new AUDI A6</p>                
                <Row xs={2} md={2} className="g-4 me-5 ms-5">
               
-                <Col > <Image src="../Contact-company/assets/img/image27.png" width={'300px'} height={'300px'} thumbnail /></Col>
-                <Col ><Image src="../Contact-company/assets/img/image28.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col > <Image src="/assets/img/image27.png" width={'300px'} height={'300px'} thumbnail /></Col>
+                <Col ><Image src="/assets/img/image28.png" width={'300px'} height={'300px'} thumbnail /></Col>
                 </Row>
                </dd>
                <dt className="col-sm-2">On 2018</dt>
                <dd className="col-sm-10 fw-lighter text-black">
                 <p>we developped 9 molds for one of SAGEMCOM electric meters .</p>
                 <Row xs={2} md={2} className="g-4 me-5 ms-5">
-              <Col > <Image src="../Contact-company/assets/img/image19.png" width={'200px'} height={'100px'} maxHeight={'100px'} thumbnail /></Col>
-              <Col ><Image src="../Contact-company/assets/img/image21.png" width={'400px'} height={'300px'} thumbnail /></Col>
+              <Col > <Image src="/assets/img/image19.png" width={'200px'} height={'100px'} maxHeight={'100px'} thumbnail /></Col>
+              <Col ><Image src="/assets/img/image21.png" width={'400px'} height={'300px'} thumbnail /></Col>
               </Row>
                </dd>
                <dt className="col-sm-2">2019</dt>
                <dd className="col-sm-10 fw-lighter text-black">
                 <p>we developped 13 molds for SAGEMCOM</p>
                 <Row xs={2} md={2} className="g-4 me-5 ms-5">
-              <Col > <Image src="../Contact-company/assets/img/image18.png" width={'200px'} height={'100px'} maxHeight={'100px'} thumbnail /></Col>
-              <Col ><Image src="../Contact-company/assets/img/image20.png" width={'300px'} height={'300px'} thumbnail /></Col>
+              <Col > <Image src="/assets/img/image18.png" width={'200px'} height={'100px'} maxHeight={'100px'} thumbnail /></Col>
+              <Col ><Image src="/assets/img/image20.png" width={'300px'} height={'300px'} thumbnail /></Col>
               </Row>
               
                </dd>
