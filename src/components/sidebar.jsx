@@ -21,7 +21,7 @@ export default function Sidebar() {
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
-import { House, CheckCircle, XCircle,Briefcase } from 'react-bootstrap-icons';
+import { House, CheckCircle,Briefcase } from 'react-bootstrap-icons';
 
 const styles = {
   sidebar: {

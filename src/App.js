@@ -11,11 +11,8 @@ import Services from './components/services';
 import About  from "./components/about";
 import Career from "./components/Carrer";
 import DemandJob from './components/DemandJob';
-import Dashboard from './components/Dashboard';
 import Login from './components/login';
 //import Signup from './components/Signup';
-import Accept from './components/Accept';
-import Sidebar from './components/sidebar';
 import Container from './components/container';
 
 
@@ -56,7 +53,7 @@ function App() {
   }, [location.pathname]);
 
   // Define routes where the Sidebar should appear
-  const sidebarRoutes = ["/dashboard", "/accept"];
+  //const sidebarRoutes = ["/dashboard", "/accept"];
   return (
     <div className='App'>
     <NavBar/>
