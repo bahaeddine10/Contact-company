@@ -1,71 +1,8 @@
-/*import React, { useEffect, useState } from 'react';
-import { Container, Table, Button } from 'react-bootstrap';
-import axios from 'axios';
-
-export default function Accept() {
-  const [demands, setDemands] = useState([]);
-
-  useEffect(() => {
-    const fetchAcceptedDemands = async () => {
-      try {
-        const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:3000/alldemandsaccepted', {
-          headers: { Authorization: token },
-        });
-        setDemands(response.data);
-      } catch (error) {
-        alert('Error fetching accepted demands');
-      }
-    };
-
-    fetchAcceptedDemands();
-  }, []);
-
-  return (
-    <Container fluid className="text-center mt-3">
-      <h2 className="text-success">Accepted Demands</h2>
-      <Table responsive striped bordered hover>
-        <thead>
-          <tr>
-            <th>CV</th>
-            <th>Job Title</th>
-            <th>Job Description</th>
-            <th>Required Skills</th>
-            <th>Experience</th>
-            <th>Education</th>
-            <th>Salary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {demands.map((demand) => (
-            <tr key={demand.id || demand._id}>
-              <td>
-                <Button
-                  variant="link"
-                  onClick={() => alert(`Download ${demand.file.filename}`)}
-                >
-                  {demand.file.filename}
-                </Button>
-              </td>
-              <td>{demand.jobTitle}</td>
-              <td>{demand.jobDesc}</td>
-              <td>{demand.reqSkills}</td>
-              <td>{demand.experience}</td>
-              <td>{demand.education}</td>
-              <td>{demand.salary}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
-  );
-}
-*/
-// Accept.jsx
 // Accept.jsx
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const Accept = () => {
   const [demands, setDemands] = useState([]);
@@ -80,7 +17,7 @@ const Accept = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:3000/alldemandsaccepted', {
+        const response = await axios.get(`${API_BASE_URL}/alldemandsaccepted`, {
           headers: {
             Authorization: token,
           },

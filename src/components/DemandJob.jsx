@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col ,Card} from 'react-bootstrap';
 
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const DemandForm = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const DemandForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/uploaddemand', data, {
+      const response = await axios.post(`${API_BASE_URL}/uploaddemand`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

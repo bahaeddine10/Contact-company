@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'; // Ensure this is in the same directory
+import './App.css';
+import API_BASE_URL from '../config/api';
+import { extractUniqueEmails } from '../utils/emailUtils';
 
 const ProjectManagement = () => {
     const [projects, setProjects] = useState([]);
@@ -30,7 +32,7 @@ const ProjectManagement = () => {
                 alert('You are not authenticated!');
                 return;
             }
-            const response = await axios.get('http://localhost:3000/project/all',{
+            const response = await axios.get(`${API_BASE_URL}/project/all`, {
                 headers: {
                   Authorization: token,
                 },
@@ -48,17 +50,12 @@ const ProjectManagement = () => {
           alert('You are not authenticated!');
           return;
         }
-                        const response = await axios.get('http://localhost:3000/alldemandsaccepted', {
+            const response = await axios.get(`${API_BASE_URL}/alldemandsaccepted`, {
                 headers: {
                   Authorization: token,
                 },
-              });
-                        const rawData = Array.isArray(response.data) ? response.data : [];
-                        const emails = rawData
-                                .map((demand) => (demand?.email ? String(demand.email).trim() : ''))
-                                .filter((email) => email.length > 0);
-
-                        setEmployeeEmails([...new Set(emails)]);
+            });
+            setEmployeeEmails(extractUniqueEmails(response.data));
         } catch (error) {
             console.error('Error fetching employee emails', error);
         }
@@ -81,21 +78,40 @@ const ProjectManagement = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!newProject.title.trim() || !newProject.description.trim()) {
+            alert('Title and description are required.');
+            return;
+        }
+
+        if (!newProject.employees || newProject.employees.length === 0) {
+            alert('Please select at least one employee before creating a project.');
+            return;
+        }
+
         try {
             const token = localStorage.getItem('authToken');
         if (!token) {
           alert('You are not authenticated!');
           return;
         }
-            await axios.post('http://localhost:3000/project/create', newProject, {
+            await axios.post(`${API_BASE_URL}/project/create`, {
+                ...newProject,
+                title: newProject.title.trim(),
+                description: newProject.description.trim(),
+                employees: [...new Set(newProject.employees)]
+            }, {
                 headers: {
                   Authorization: token,
+                  'Content-Type': 'application/json',
                 },
               });
-            fetchProjects(); // Refresh the project list after adding a new project
-            setNewProject({ title: '', description: '', employees: [] }); // Reset form
+            await fetchProjects();
+            setNewProject({ title: '', description: '', employees: [] });
+            alert('Project created successfully!');
         } catch (error) {
             console.error('Error creating project', error);
+            alert(error?.response?.data || 'Error creating project');
         }
     };
 

@@ -76,6 +76,7 @@ export default Dashboard;*/
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const Dashboard = () => {
   const [demands, setDemands] = useState([]);
@@ -90,7 +91,7 @@ const Dashboard = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:3000/alldemandsnotaccepted', {
+        const response = await axios.get(`${API_BASE_URL}/alldemandsnotaccepted`, {
           headers: {
             Authorization: token,
           },
@@ -115,7 +116,7 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await axios.put(`http://localhost:3000/updatedemand/${id}`, null, {
+      const response = await axios.put(`${API_BASE_URL}/updatedemand/${id}`, null, {
         headers: {
           Authorization: token,
         },
@@ -140,7 +141,7 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await axios.delete(`http://localhost:3000/deletedemand/${id}`, {
+      const response = await axios.delete(`${API_BASE_URL}/deletedemand/${id}`, {
         headers: {
           Authorization: token,
         },

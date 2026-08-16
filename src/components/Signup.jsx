@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ function Signup() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/agent/register', {
+      const response = await axios.post(`${API_BASE_URL}/agent/register`, {
         email,
         password,
       });
