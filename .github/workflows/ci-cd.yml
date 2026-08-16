@@ -50,7 +50,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/contact-company-frontend:latest
+          tags: 
+            ${{ secrets.DOCKER_USERNAME }}/contact-company-frontend:latest
+            ${{ secrets.DOCKER_USERNAME }}/contact-company-frontend:${{ github.sha }}
 
       - name: Build and push backend image
         uses: docker/build-push-action@v6
@@ -58,4 +60,6 @@ jobs:
           context: .
           file: ./node-backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/contact-company-backend:latest
+          tags: 
+            ${{ secrets.DOCKER_USERNAME }}/contact-company-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/contact-company-backend:${{ github.sha }}
