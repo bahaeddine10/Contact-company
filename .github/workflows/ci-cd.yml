@@ -50,7 +50,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 
+          tags: |
             ${{ secrets.DOCKER_USERNAME }}/contact-company-frontend:latest
             ${{ secrets.DOCKER_USERNAME }}/contact-company-frontend:${{ github.sha }}
 
@@ -60,6 +60,6 @@ jobs:
           context: .
           file: ./node-backend/Dockerfile
           push: true
-          tags: 
+          tags: |
             ${{ secrets.DOCKER_USERNAME }}/contact-company-backend:latest
             ${{ secrets.DOCKER_USERNAME }}/contact-company-backend:${{ github.sha }}

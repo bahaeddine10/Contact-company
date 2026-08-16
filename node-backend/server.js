@@ -43,5 +43,3 @@ mongoose
     console.error('MongoDB connection error:', error.message);
     process.exit(1);
   });
-
-/*comment*/
