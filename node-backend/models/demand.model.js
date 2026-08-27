@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
+
 const demandSchema = new mongoose.Schema({
     jobTitle: { type: String, required: true },
     jobDesc: { type: String, required: true },
@@ -14,141 +15,87 @@ const demandSchema = new mongoose.Schema({
         data: { type: Buffer, required: true },
         contentType: { type: String, required: true },
     },
-  });
-  
-    const url = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/contactdb'
-  // Create the Demand model
-  const Demand = mongoose.model('Demand', demandSchema);
-  
-  const testConnection=()=>{
-    return new Promise((resolve,reject)=>{
-        mongoose.connect(url)
-        .then(()=>{
-            mongoose.disconnect()
-            resolve('connected !')
-        })
-        .catch(err=>reject(err))
-        
-    })
-}
+});
+
+// Create the Demand model
+const Demand = mongoose.model('Demand', demandSchema);
+
+const testConnection = () => {
+    return Promise.resolve('connected !');
+};
 
 const selectAllNotAccepted = () => {
-    return new Promise((resolve, reject) => {
-        mongoose.connect(url)
-            .then(async () => {
-                try {
-                    // Modify the query to filter demands where 'consulted' is false
-                    const data = await Demand.find({ accepted: false });
-                    resolve(data);
-                    mongoose.disconnect();
-                } catch (err) {
-                    reject(err);
-                }
-            })
-            .catch((err) => {
-                reject(err);
-            });
-    });
+    return Demand.find({ accepted: false });
 };
 
 const selectAllAccepted = () => {
-    return new Promise((resolve, reject) => {
-        mongoose.connect(url)
-            .then(async () => {
-                try {
-                    // Modify the query to filter demands where 'consulted' is false
-                    const data = await Demand.find({ accepted: true });
-                    resolve(data);
-                    mongoose.disconnect();
-                } catch (err) {
-                    reject(err);
-                }
-            })
-            .catch((err) => {
-                reject(err);
-            });
-    });
+    return Demand.find({ accepted: true });
 };
 
 demandSchema.statics.getFileByName = async function (filename) {
-    return this.findOne({ 'file.filename': filename }, 'file').exec(); // Only return the `file` field
+    return this.findOne({ 'file.filename': filename }, 'file').exec();
 };
 
-  // Function to save a new Demand
-  const saveDemand=async (demandData)=>{
-    return new Promise((resolve,reject)=>{
-        mongoose.connect(url)
-        .then(async ()=>{
-            try {
-                const newDemand = new Demand(demandData);
-                const savedDemand = await newDemand.save();
-                resolve(savedDemand); // Resolve with saved data
-            }catch (error) {
-                reject(error); // Reject with error
-            }
-        }).catch((err)=>{reject(err)})
-    })
-}
+const saveDemand = (demandData) => {
+    const newDemand = new Demand(demandData);
+    return newDemand.save();
+};
 
-const deleteone=(id)=>{
-    return new Promise((resolve,reject)=>{
-        mongoose.connect(url)
-        .then(()=>{
-            Demand.findOneAndDelete({_id:id})
+const deleteone = (id) => {
+    return new Promise((resolve, reject) => {
+        Demand.findOneAndDelete({ _id: id })
             .then((deletedDemand) => {
                 if (!deletedDemand) {
-                    reject('demand not found');
+                    return reject('demand not found');
                 }
-                resolve(deletedDemand)
-                mongoose.disconnect()
-            }).catch((err) => reject(err))
-        })
-        .catch((err)=>{reject(err)})
-    })
-}
+                resolve(deletedDemand);
+            })
+            .catch((err) => reject(err));
+    });
+};
 
-const accepteone=(id)=>{
-    return new Promise((resolve,reject)=>{
-        mongoose.connect(url)
-        .then(()=>{
-            Demand.findOneAndUpdate({_id:id},{accepted : true},{ new: true })
+const accepteone = (id) => {
+    return new Promise((resolve, reject) => {
+        Demand.findOneAndUpdate({ _id: id }, { accepted: true }, { new: true })
             .then(async (updatedDemand) => {
                 if (!updatedDemand) {
                     return reject('demand not found');
                 }
 
-                // Keep accept action successful even if email provider auth fails.
-                try {
-                    const transporter = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                            user: 'abassiadem321@gmail.com',
-                            pass: 'pyld mpmz zzyo krbh'
-                        }
-                    });
+                const emailUser = process.env.EMAIL_USER;
+                const emailPass = process.env.EMAIL_PASS;
 
-                    const mailOptions = {
-                        from: 'abassiadem321@gmail.com',
-                        to: updatedDemand.email,
-                        subject: 'Job Application Accepted',
-                        text: `Dear Employee,\n\nYour application for the position "${updatedDemand.jobTitle}" has been accepted.\n\nBest regards,\nYour Company`
-                    };
+                // Send email only if email configuration is provided
+                if (emailUser && emailPass) {
+                    try {
+                        const transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: emailUser,
+                                pass: emailPass
+                            }
+                        });
 
-                    await transporter.sendMail(mailOptions);
-                } catch (error) {
-                    console.error('Email send failed:', error.message);
+                        const mailOptions = {
+                            from: emailUser,
+                            to: updatedDemand.email,
+                            subject: 'Job Application Accepted',
+                            text: `Dear Applicant,\n\nYour application for the position "${updatedDemand.jobTitle}" has been accepted.\n\nBest regards,\nContact Company Team`
+                        };
+
+                        await transporter.sendMail(mailOptions);
+                    } catch (error) {
+                        console.error('Email send notification failed:', error.message);
+                    }
                 }
 
-                mongoose.disconnect();
                 resolve(updatedDemand);
             })
-            .catch((err) => reject(err))
-        })
-        .catch((err)=>{reject(err)})
-    })
-}
-  
-  module.exports = {
+            .catch((err) => reject(err));
+    });
+};
+
+module.exports = {
     Demand,
     saveDemand,
     testConnection,
@@ -156,7 +103,7 @@ const accepteone=(id)=>{
     deleteone,
     accepteone,
     selectAllAccepted
-  };
+};
 
 /*
 let schemaStu=mongoose.Schema({

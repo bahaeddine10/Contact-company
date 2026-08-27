@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
 
-const privatekey = "#hellofromjjjj#";
+const JWT_SECRET = process.env.JWT_SECRET || '#hellofromjjjj#';
 
 // Middleware for verifying JWT token
 const verifyToken = (req, res, next) => {
@@ -15,11 +15,11 @@ const verifyToken = (req, res, next) => {
         return res.status(400).send('You must provide a token.');
     }
 
-    jwt.verify(token, privatekey, (err, decoded) => {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(400).send('Invalid or expired token.');
         } else {
-            console.log(decoded);
+            req.user = decoded;
             next();
         }
     });

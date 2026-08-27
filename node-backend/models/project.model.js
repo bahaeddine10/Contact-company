@@ -17,21 +17,19 @@ const projectSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    status:{
+    status: {
         type: String,
         default: "not finished yet",
     }
 });
-const url = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/contactdb'
 
 const Project = mongoose.model('Project', projectSchema);
+
 // Function to create a new project
 const createProject = async (projectData) => {
     try {
-        await mongoose.connect(url);
         const newProject = new Project(projectData);
         await newProject.save();
-        await mongoose.disconnect();
         return newProject;
     } catch (err) {
         throw new Error(err.message);
@@ -41,17 +39,16 @@ const createProject = async (projectData) => {
 // Function to get all projects
 const getAllProjects = async () => {
     try {
-        await mongoose.connect(url);
         const projects = await Project.find();
-        await mongoose.disconnect();
         return projects;
     } catch (err) {
         throw new Error(err.message);
     }
 };
 
-module.exports={
+module.exports = {
     Project,
     createProject,
     getAllProjects
-}
+};
+
