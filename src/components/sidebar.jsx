@@ -127,7 +127,7 @@ export default function Sidebar() {
         </Link>
       </Nav>
       <div style={styles.footer}>
-        <small>&copy; 2024 Contact_Company</small>
+        <small>&copy; 2026 Deployed by Adam Abassi</small>
       </div>
     </Navbar>
   );
