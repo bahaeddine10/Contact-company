@@ -14,9 +14,7 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
 EXPOSE 80
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/bin/sh", "-c", "echo \"window._env_ = { REACT_APP_API_BASE_URL: '${REACT_APP_API_BASE_URL:-}' };\" > /usr/share/nginx/html/env-config.js && exec nginx -g 'daemon off;'"]
+
 
