@@ -1,0 +1,211 @@
+/* ============================================================
+   Sidebar design tokens
+   Prefixed (--sb-*) so these never collide with other CSS
+   custom properties elsewhere in the app.
+   ============================================================ */
+:root {
+  --sb-bg: #0f172a;             /* deep slate 900 */
+  --sb-bg-soft: #1e293b;        /* slate 800 */
+  --sb-border: rgba(148, 163, 184, 0.12);
+  --sb-text: #cbd5e1;           /* slate 300 — default link text */
+  --sb-text-muted: #64748b;     /* slate 500 — footer / sublabel */
+  --sb-text-strong: #f1f5f9;    /* slate 100 — hover / active text */
+  --sb-accent: #6366f1;         /* indigo 500 */
+  --sb-accent-strong: #818cf8;  /* indigo 400 */
+  --sb-accent-soft: rgba(99, 102, 241, 0.14);
+  --sb-width: 264px;
+}
+
+/* ---------- Outer navbar wrapper ---------- */
+.app-sidebar-navbar {
+  padding: 0;
+}
+
+/* ---------- Mobile top strip (< 768px) ---------- */
+.app-sidebar-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sb-bg);
+  border-bottom: 1px solid var(--sb-border);
+  padding: 0.65rem 1rem;
+}
+
+.app-sidebar-brand-sm {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.brand-title-sm {
+  color: var(--sb-text-strong);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+}
+
+.sidebar-toggle {
+  border-color: var(--sb-border) !important;
+  padding: 0.35rem 0.55rem;
+}
+
+.sidebar-toggle:focus {
+  box-shadow: 0 0 0 3px var(--sb-accent-soft) !important;
+}
+
+/* ---------- Sidebar panel (desktop rail + mobile offcanvas) ---------- */
+.app-sidebar {
+  background: var(--sb-bg);
+  border-right: 1px solid var(--sb-border);
+  width: var(--sb-width) !important;
+  max-width: 85vw;
+}
+
+.app-sidebar .offcanvas-header {
+  border-bottom: 1px solid var(--sb-border);
+  padding: 1rem 1.25rem;
+}
+
+.app-sidebar .offcanvas-title {
+  color: var(--sb-text-strong);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.app-sidebar-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .app-sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* ---------- Brand ---------- */
+.app-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--sb-accent) 0%, #8b5cf6 100%);
+  color: #fff;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  background: linear-gradient(90deg, #f8fafc, #c7d2fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-sub {
+  font-size: 0.68rem;
+  color: var(--sb-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 2px;
+}
+
+/* ---------- Nav links ---------- */
+.app-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  color: var(--sb-text) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.sidebar-link-icon {
+  font-size: 1.05rem;
+  color: var(--sb-text-muted);
+  transition: color 0.18s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(148, 163, 184, 0.08);
+  color: var(--sb-text-strong) !important;
+}
+
+.sidebar-link:hover .sidebar-link-icon {
+  color: var(--sb-text-strong);
+}
+
+.sidebar-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--sb-accent-soft);
+}
+
+.sidebar-link.active {
+  background-color: var(--sb-accent-soft);
+  border-left-color: var(--sb-accent-strong);
+  color: var(--sb-text-strong) !important;
+  font-weight: 600;
+}
+
+.sidebar-link.active .sidebar-link-icon {
+  color: var(--sb-accent-strong);
+}
+
+/* ---------- Footer ---------- */
+.app-sidebar-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--sb-border);
+  text-align: center;
+  color: var(--sb-text-muted);
+}
+
+.app-sidebar-footer small {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-link {
+    transition: none;
+  }
+}

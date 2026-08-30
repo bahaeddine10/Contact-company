@@ -1,134 +1,78 @@
-/*import React from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
-
-export default function Sidebar() {
-  return (
-    <Navbar bg="secondary"  className="flex-column p-3" style={{ height: '100vh', width: '200px' }}>
-      <Navbar.Brand>Agent Panel</Navbar.Brand>
-      <Nav className="flex-column">
-        <Link to="/dashboard" className="nav-link">
-          Attands
-        </Link>
-        <Link to="/accept" className="nav-link">
-          Accepted
-        </Link>
-      </Nav>
-    </Navbar>
-  );
-}
-*/
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
-import { House, CheckCircle,Briefcase } from 'react-bootstrap-icons';
+import { Navbar, Nav, Offcanvas, Container } from 'react-bootstrap';
+import { House, CheckCircle, Briefcase, Grid } from 'react-bootstrap-icons';
+import './sidebar.css';
 
-const styles = {
-  sidebar: {
-    height: '100vh',
-    width: '250px',
-    transition: 'all 0.3s ease-in-out',
-    boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)',
-  },
-  brand: {
-    marginBottom: '1.5rem',
-    width: '100%',
-    textAlign: 'center', // Removed `as const`
-  },
-  brandTitle: {
-    fontWeight: 'bold',
-    letterSpacing: '1px',
-  },
-  navLink: {
-    borderRadius: '5px',
-    transition: 'all 0.3s ease',
-    padding: '10px 15px',
-    marginBottom: '5px',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  icon: {
-    marginRight: '10px',
-  },
-  footer: {
-    marginTop: 'auto',
-    textAlign: 'center', // Removed `as const`
-    color: '#6c757d',
-  },
-};
+const NAV_ITEMS = [
+  { path: '/dashboard', label: 'Dashboard', icon: House },
+  { path: '/accept', label: 'Accepted', icon: CheckCircle },
+  { path: '/project', label: 'Projects', icon: Briefcase },
+];
 
 export default function Sidebar() {
   const location = useLocation();
 
-  const getNavLinkClass = (path) => {
-    return `nav-link mb-2 ${location.pathname === path ? 'active' : ''}`;
-  };
-
   return (
-    <Navbar 
-      bg="dark" 
-      variant="dark" 
-      className="flex-column p-3 shadow-lg" 
-      style={styles.sidebar}
-    >
-      <style>
-        {`
-          .nav-link:hover, .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
-          }
-          .nav-link:hover {
-            background-color: white;
-            color: #343a40 !important;
-          }
-          @media (max-width: 768px) {
-            .navbar {
-              width: 100% !important;
-              height: auto !important;
-            }
-            .nav-link:hover {
-              transform: none;
-            }
-          }
-        `}
-      </style>
+    <Navbar expand="md" variant="dark" className="app-sidebar-navbar">
+      {/* Slim top strip — only visible below 768px */}
+      <Container fluid className="app-sidebar-topbar d-md-none">
+        <Navbar.Brand className="app-sidebar-brand-sm">
+          <span className="brand-badge">
+            <Grid />
+          </span>
+          <span className="brand-title-sm">Admin Panel</span>
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="app-sidebar-offcanvas"
+          className="sidebar-toggle"
+        />
+      </Container>
 
-      <Navbar.Brand style={styles.brand}>
-        <h4 style={styles.brandTitle}>Admin Panel</h4>
-      </Navbar.Brand>
-      <Nav className="flex-column w-100">
-        <Link 
-          to="/dashboard" 
-          className={getNavLinkClass('/dashboard')}
-          style={styles.navLink}
-        >
-          <House style={styles.icon} /> Dashboard
-        </Link>
-        {/*<Link 
-          to="/accepte" 
-          className={getNavLinkClass('/not-accepted')}
-          style={styles.navLink}
-        >
-          <XCircle style={styles.icon} /> Not Accepted
-        </Link>*/}
-        <Link 
-          to="/accept" 
-          className={getNavLinkClass('/accept')}
-          style={styles.navLink}
-        >
-          <CheckCircle style={styles.icon} /> Accepted
-        </Link>
-        <Link 
-          to="/project" 
-          className={getNavLinkClass('/project')}
-          style={styles.navLink}
-        >
-          <Briefcase style={styles.icon} /> Projects
-        </Link>
-      </Nav>
-      <div style={styles.footer}>
-        <small>&copy; 2026 Deployed by Adam Abassi</small>
-      </div>
+      {/* Renders inline as a fixed rail on desktop, as a slide-in
+          Offcanvas panel below the md breakpoint */}
+      <Navbar.Offcanvas
+        id="app-sidebar-offcanvas"
+        aria-labelledby="app-sidebar-offcanvas-label"
+        placement="start"
+        className="app-sidebar"
+      >
+        <Offcanvas.Header closeButton closeVariant="white" className="d-md-none">
+          <Offcanvas.Title id="app-sidebar-offcanvas-label">Menu</Offcanvas.Title>
+        </Offcanvas.Header>
+
+        <Offcanvas.Body className="app-sidebar-body">
+          <div className="app-sidebar-brand d-none d-md-flex">
+            <span className="brand-badge">
+              <Grid />
+            </span>
+            <div className="brand-text">
+              <div className="brand-title">Admin Panel</div>
+              <div className="brand-sub">Control Center</div>
+            </div>
+          </div>
+
+          <Nav className="flex-column app-sidebar-nav">
+            {NAV_ITEMS.map(({ path, label, icon: Icon }) => {
+              const isActive = location.pathname === path;
+              return (
+                <Nav.Link
+                  key={path}
+                  as={Link}
+                  to={path}
+                  className={`sidebar-link${isActive ? ' active' : ''}`}
+                >
+                  <Icon className="sidebar-link-icon" aria-hidden="true" />
+                  <span>{label}</span>
+                </Nav.Link>
+              );
+            })}
+          </Nav>
+
+          <div className="app-sidebar-footer">
+            <small>&copy; 2026 Deployed by Adam Abassi</small>
+          </div>
+        </Offcanvas.Body>
+      </Navbar.Offcanvas>
     </Navbar>
   );
 }
