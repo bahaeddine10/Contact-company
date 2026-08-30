@@ -1,0 +1,84 @@
+/* Glassmorphic Translucent Navbar */
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+/* Brand Logo */
+.brand-logo {
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.03);
+}
+
+/* Nav Links & Hover Underline Animation */
+.nav-link-custom {
+  color: #4a5568 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  padding: 0.5rem 0.75rem !important;
+  transition: color 0.25s ease;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+  color: #2563eb !important;
+}
+
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 2px;
+  left: 50%;
+  background-color: #2563eb;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-link-custom:hover::after {
+  width: 60%;
+}
+
+/* Modern Gradient CTA Button */
+.btn-modern {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+  transition: all 0.25s ease !important;
+}
+
+.btn-modern:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.45);
+}
+
+/* Mobile Dropdown Styling */
+@media (max-width: 991.98px) {
+  .custom-navbar .navbar-collapse {
+    background: #ffffff;
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-top: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-link-custom::after {
+    display: none;
+  }
+}
