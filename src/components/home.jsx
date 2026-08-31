@@ -54,7 +54,7 @@ function Home() {
           <Row className="align-items-center g-5">
             <Col lg={6}>
               <div className="pe-lg-3">
-                <span className="section-subtitle">Who We Are</span>
+                <span className="section-subtitle">DEPLOYED BY ADEM ABASSI</span>
                 <h2 className="section-title mb-4">Pioneering Industrial Quality Since 1998</h2>
                 <p className="text-secondary leading-relaxed mb-4">
                   Founded in 1998, <strong>Contact</strong> is a subsidiary of SIAME operating under the full exporter regime. Certified under <strong>IATF 16949</strong> and <strong>ISO 14001</strong>, we have built an outstanding reputation for quality in plastic injection molding and automated assembly.
