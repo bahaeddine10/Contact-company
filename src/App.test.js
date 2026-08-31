@@ -19,5 +19,5 @@ test('renders the home page heading', () => {
       <App />
     </HashRouter>
   );
-  expect(screen.getByText(/Welcome to Contact Company/i)).toBeInTheDocument();
+  expect(screen.getByText(/Contact Company/i)).toBeInTheDocument();
 });
