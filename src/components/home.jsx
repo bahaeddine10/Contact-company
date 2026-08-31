@@ -100,7 +100,7 @@ function Home() {
                   <div className="service-icon mb-3">01</div>
                   <Card.Title className="fw-bold mb-3">Plastic Injection Molding</Card.Title>
                   <Card.Text className="text-secondary small">
-                    Precision injection molding of complex automotive components powered by 23 automatic machines.
+                    Hello.
                   </Card.Text>
                 </Card.Body>
               </Card>
