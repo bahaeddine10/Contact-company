@@ -161,7 +161,7 @@ function Home() {
             </Col>
 
             <Col lg={6} className="order-lg-1">
-              <span className="section-subtitle">Our Location</span>
+              <span className="section-subtitle">DEPLOYED</span>
               <h2 className="section-title mb-4">Strategic Industrial Facility</h2>
               <p className="text-secondary mb-4">
                 Situated in the heart of Grombalia’s industrial zone, we deliver connectors and automotive solutions across global markets. Our continuous 24/7 operating model guarantees reliable delivery schedules for world-class clients.
